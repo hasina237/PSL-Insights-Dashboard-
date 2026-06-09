@@ -286,7 +286,7 @@ with tab6:
     runs = matchup['batsman_runs'].sum()
 
     balls = len(matchup)
-    # matchup['player_dismissed'] = matchup['player_dismissed'].replace('',np.nan)
+   
     outs = (matchup['player_dismissed'] != 'Not Out').sum()
 
     if balls > 0:
@@ -308,13 +308,7 @@ with tab6:
         'Value' : [runs,balls,outs]
     })
 
-    # fig = px.scatter(
-    #     wicket_analysis,
-    #     x="Metric",
-    #     y="Value",
-    #     size="batsman_runs",
-    #     title="Batter vs bowler"
-    # )
+    
     fig = px.bar(stats_df, x= 'Metric', y= 'Value',title= f'{batter} vs {bowler}')
     st.plotly_chart(fig, use_container_width=True)
 
